@@ -7,14 +7,14 @@ window.addEventListener("DOMContentLoaded", function() {
     
 //shortcut get ele by id
     
-    function $(x) {
+    function Ge(x) {
 	    var ele = document.getElementById(x);
 	    return ele;
     }
     
    function makeCats(){
 	   var formTag = document.getElementsByTagName("form"),
-	   	selectLi = $("select"),
+	   	selectLi = Ge("select"),
 	   	makeSelect = document.createElement("select");
 	   	makeSelect.setAttribute("id", "groups");
 	 for (var i=0,  j=travelGroups.length; i<j; i++){
@@ -32,37 +32,37 @@ window.addEventListener("DOMContentLoaded", function() {
    // check box values
    
    function getClothesvalue(){
-	   if ($("Clothes").checked){
-		   Clothesvalue = $("Clothes").value;
+	   if (Ge("Clothes").checked){
+		   Clothesvalue = Ge("Clothes").value;
 	   } else { Clothesvalue = "none";	    
 	   };
    };
    function getMedicationvalue(){
-	   if ($("Medication").checked){
-		   Medicationvalue = $("Medication").value;
+	   if (Ge("Medication").checked){
+		   Medicationvalue = Ge("Medication").value;
 	   } else { Medicationvalue = "none";	    
 	   };
    };
    function getToiletriesvalue(){
-	   if ($("Toiletries").checked){
-		   Toiletriesvalue = $("Toiletries").value;
+	   if (Ge("Toiletries").checked){
+		   Toiletriesvalue = Ge("Toiletries").value;
 	   } else { Toiletriesvalue = "none";	    
 	   };
    };
    function toggleControls(n){
 	   switch(n){
 	        case "on":
-	       	    $("vacationForm").style.display = "none";
-	       	    $("clear").style.display = "inline";
-	       	    $("Display").style.display = "none";
-	       	    $("addNew").style.display = "inline";
+	       	    Ge("vacationForm").style.display = "none";
+	       	    Ge("clear").style.display = "inline";
+	       	    Ge("Display").style.display = "none";
+	       	    Ge("addNew").style.display = "inline";
 	       	    break;
 	        case "off":
-	            $("vacationForm").style.display = "block";
-	       	    $("clear").style.display = "inline";
-	       	    $("Display").style.display = "inline";
-	       	    $("addNew").style.display = "none";
-	       	    $("items").style.display = "none";
+	            Ge("vacationForm").style.display = "block";
+	       	    Ge("clear").style.display = "inline";
+	       	    Ge("Display").style.display = "inline";
+	       	    Ge("addNew").style.display = "none";
+	       	    Ge("items").style.display = "none";
 	       	    break;
 	        default:
 	            return false;      
@@ -84,15 +84,15 @@ window.addEventListener("DOMContentLoaded", function() {
         getMedicationvalue();
         getToiletriesvalue()
 	    var item			  = {}; 
-	        item.group     =["group:", $("groups").value];         
-	        item.dest         =["Destination:", $( "vdest" ).value];
-	        item.days        =["Days of travel:", $("quantity").value];
+	        item.group     =["group:", Ge("groups").value];         
+	        item.dest         =["Destination:", Ge( "vdest" ).value];
+	        item.days        =["Days of travel:", Ge("quantity").value];
 	        item.clothes       =["checkbox Clothes:", Clothesvalue];
 	        item.meds         =["checkbox Medication:", Medicationvalue];
 	        item.toiletries      =["checkbox Toiletries:", Toiletriesvalue];	        
-	        item.Budget        =["Budget scale:" , $("range").value];
-	        item.date           =["Vacation starts on:", $("startdate").value];	        
-	        item.extraNotes     =["extra thoughts!:", $("notes").value];
+	        item.Budget        =["Budget scale:" , Ge("range").value];
+	        item.date           =["Vacation starts on:", Ge("startdate").value];	        
+	        item.extraNotes     =["extra thoughts!:", Ge("notes").value];
 	   //save data in local storage and use stringify to convert data into string
 	   localStorage.setItem(id, JSON.stringify(item) );
 	   alert("Checklist Complete!");
@@ -109,7 +109,7 @@ window.addEventListener("DOMContentLoaded", function() {
     	var makeList = document.createElement("ul");
     	makeDiv.appendChild(makeList);
     	document.body.appendChild(makeDiv);
-    	$("items").style.display = "inline";    	
+    	Ge("items").style.display = "inline";    	
     	for(var i=0, len=localStorage.length; i<len; i++){
 	    	var makeli = document.createElement("li");
 	    	var linksLi = document.createElement("li");
@@ -181,27 +181,27 @@ window.addEventListener("DOMContentLoaded", function() {
 	    toggleControls("off");
 	    
 	    //populate the form fields with current local storage values
-	    $("groups").value = item.group[1];	    
-	    $("vdest").value = item.dest[1];
-	    $("quantity").value = item.days[1];	    
+	    Ge("groups").value = item.group[1];	    
+	    Ge("vdest").value = item.dest[1];
+	    Ge("quantity").value = item.days[1];	    
 	    if (item.clothes[1] == "Clothes"); {
-	        $("Clothes").setAttribute("checked", "checked");
+	        Ge("Clothes").setAttribute("checked", "checked");
 		}
 	    if (item.meds[1] == "Medication"); {
-	        $("Medication").setAttribute("checked", "checked");
+	        Ge("Medication").setAttribute("checked", "checked");
 		}
 	    if (item.toiletries[1] == "Toiletries"); {
-	        $("Toiletries").setAttribute("checked", "checked");
+	        Ge("Toiletries").setAttribute("checked", "checked");
 		}
-	    $("range").value = item.Budget[1];
-	    $("startdate").value = item.date[1];
-	    $("notes").value = item.extraNotes[1];
+	    Ge("range").value = item.Budget[1];
+	    Ge("startdate").value = item.date[1];
+	    Ge("notes").value = item.extraNotes[1];
     
         //remove the initial listener from the input "save contact" button.
         completeChecklist.removeEventListener("click", storeData);
         //change the submitt button value to edit button
-        $("submit").value = "Edit Vacation";
-        var editSubmit = $("submit");
+        Ge("submit").value = "Edit Vacation";
+        var editSubmit = Ge("submit");
         //Save the key value established in this function as a properity of the editSubmit event
         // so we can use that value again when we save the data we edited
         editSubmit.addEventListener("click", validate);
@@ -231,9 +231,9 @@ window.addEventListener("DOMContentLoaded", function() {
  }
      function validate(e){
 	     //define elemints we want to check
-	     var getGroup = $("groups")
-	     var getvdest = $("vdest");
-	     var getquantity = $("quantity")	;     
+	     var getGroup = Ge("groups")
+	     var getvdest = Ge("vdest");
+	     var getquantity = Ge("quantity")	;     
          
          //reset error messeages
          errMsg.innerHTML = " ";
@@ -278,13 +278,13 @@ window.addEventListener("DOMContentLoaded", function() {
     }     
     var travelGroups = ["--Choose A Group--", "Vacation", "Busniess", "Commute"];
     makeCats();    
-    errMsg = $("errors");
+    errMsg = Ge("errors");
     //sets links and submits
-    var displayData = $("Display");
+    var displayData = Ge("Display");
     displayData.addEventListener("click", getData);
-    var clearData = $("clear");
+    var clearData = Ge("clear");
     clearData.addEventListener("click", clearLocal);
-    var completeChecklist = $("submit");
+    var completeChecklist = Ge("submit");
     submit.addEventListener("click", validate);
 
 
