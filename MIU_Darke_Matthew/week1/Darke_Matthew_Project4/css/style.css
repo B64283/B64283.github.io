@@ -49,6 +49,10 @@ legend {
 body {
     background-color: #c4c2c2;
 }
+div[type="content"] {
+    background:#777777;	
+}
+    
 h3 {
 	font-family: sans-serif;
 	font-size: 14px;
