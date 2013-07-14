@@ -35,12 +35,6 @@ P {
 	font-style: italic;
 	
 }
-.ui-body-a,
-.ui-overlay-a {
-	border: 1px solid #8c825f /*{a-body-border}*/;
-	color: #000000 /*{a-body-color}*/;	
-    background-color: #6b6969
-
 
 legend {
 	font-size: 40;
@@ -69,6 +63,9 @@ li {
 	
 	
 	
+}
+body {
+	background-color: #8fa8cb
 }
 input[type="submit"] {
 	margin: 50px;
