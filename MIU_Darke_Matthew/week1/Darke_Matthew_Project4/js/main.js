@@ -287,7 +287,14 @@ window.addEventListener("DOMContentLoaded", function() {
     var completeChecklist = Ge("submit");
     submit.addEventListener("click", validate);
 
-
+    // search
+    
+    //search by category
+    
+    //search by term only
+    
+    //search by term and cat
+    
 
  });
 
